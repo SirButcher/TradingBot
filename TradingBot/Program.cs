@@ -10,6 +10,9 @@ namespace TradingBot
     {
         static void Main(string[] args)
         {
+            GetPrices priceTest = new GetPrices();
+
+            priceTest.GetAvailablePrices();
         }
     }
 }
