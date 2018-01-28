@@ -37,6 +37,10 @@
       <HintPath>..\packages\MsgPack.Cli.1.0.0-rc\lib\net45\MsgPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,15 +51,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crypto.cs" />
-    <Compile Include="GetPrices.cs" />
-    <Compile Include="Helpers.cs" />
+    <Compile Include="Containers\Currencies.cs" />
+    <Compile Include="Containers\MarketPrice.cs" />
+    <Compile Include="DataHolder.cs" />
+    <Compile Include="Modules\Connection.cs" />
+    <Compile Include="Modules\SQL.cs" />
+    <Compile Include="Threads\MarketCrawler.cs" />
+    <Compile Include="Utilities\Crypto.cs" />
+    <Compile Include="Modules\GetPrices.cs" />
+    <Compile Include="Utilities\Helpers.cs" />
+    <Compile Include="Containers\Market.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Files\SQL.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\APIKey.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\SecretKey.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

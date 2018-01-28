@@ -12,5 +12,6 @@ namespace TradingBot
         {
             return (DateTime.UtcNow.Subtract(new DateTime(1970, 01, 01))).TotalSeconds.ToString();
         }
+
     }
 }

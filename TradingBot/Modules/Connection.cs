@@ -6,30 +6,15 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradingBot
+namespace TradingBot.Modules
 {
-    public class GetPrices
+    public static class Connection
     {
-        public void GetAvailablePrices()
-        {
-            Crypto crypto = new Crypto();
-
-            string apiKey = crypto.GetAPIKey();
-            string apisecret = crypto.GetSecretKey();
-            string nonce = Helpers.GetUnixTimestamp();
-            string uri = "https://bittrex.com/api/v1.1/public/getmarkets";
-
-
-            string response = GetServerResponse(uri, "");
-
-            return;
-        }
-
-        private string GetServerResponse(string URL, string apiSign)
+        public static string GetServerResponse(string URL, string apiSign)
         {
             HttpWebRequest http = (HttpWebRequest)WebRequest.Create(URL);
 
-            if(apiSign.Length > 0)
+            if (apiSign.Length > 0)
                 http.Headers.Add("apisign:" + apiSign);
 
             WebResponse response = http.GetResponse();
@@ -40,6 +25,10 @@ namespace TradingBot
 
             string content = sr.ReadToEnd();
 
+            sr.Close();
+            stream.Close();
+
+            response.Close();
 
             return content;
         }

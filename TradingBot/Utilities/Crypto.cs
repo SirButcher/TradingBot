@@ -15,7 +15,7 @@ namespace TradingBot
         {
             string key = "N/A";
 
-            using (StreamReader sr = new StreamReader("APIKey.txt"))
+            using (StreamReader sr = new StreamReader("/Files/APIKey.txt"))
             {
                 key = sr.ReadToEnd();
             }
@@ -27,7 +27,7 @@ namespace TradingBot
         {
             string key = "N/A";
 
-            using (StreamReader sr = new StreamReader("SecretKey.txt"))
+            using (StreamReader sr = new StreamReader("/Files/SecretKey.txt"))
             {
                 key = sr.ReadToEnd();
             }
