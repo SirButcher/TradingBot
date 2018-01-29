@@ -26,7 +26,21 @@ namespace TradingBot.Modules
 
             string response = Connection.GetServerResponse(uri, "");
 
-            return JsonConvert.DeserializeObject<MarketPackage>(response);
+            MarketPackage package = new MarketPackage();
+            package.success = false;
+
+
+            try
+            {
+                package = JsonConvert.DeserializeObject<MarketPackage>(response);
+            }
+            catch (Exception ex)
+            {
+                Helpers.WriteLog(ex.ToString());
+                Helpers.WriteLog(response);
+            }
+
+            return package;
         }
 
         public CurrenciesPackage GetCurrencies()
@@ -36,7 +50,21 @@ namespace TradingBot.Modules
 
             string response = Connection.GetServerResponse(uri, "");
 
-            return JsonConvert.DeserializeObject<CurrenciesPackage>(response);
+            CurrenciesPackage package = new CurrenciesPackage();
+            package.success = false;
+
+
+            try
+            {
+                package = JsonConvert.DeserializeObject<CurrenciesPackage>(response);
+            }
+            catch (Exception ex)
+            {
+                Helpers.WriteLog(ex.ToString());
+                Helpers.WriteLog(response);
+            }
+
+            return package;
         }
 
         public MarketPricePackage GetMarketPrice(string marketName)
@@ -46,7 +74,20 @@ namespace TradingBot.Modules
 
             string response = Connection.GetServerResponse(uri, "");
 
-            return JsonConvert.DeserializeObject<MarketPricePackage>(response);
+            MarketPricePackage package = new MarketPricePackage();
+            package.success = false;
+
+            try
+            {
+                package = JsonConvert.DeserializeObject<MarketPricePackage>(response);
+            }
+            catch (Exception ex)
+            {
+                Helpers.WriteLog(ex.ToString());
+                Helpers.WriteLog(response);
+            }
+
+            return package;
         }
 
     }
